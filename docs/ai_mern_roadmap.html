@@ -1,0 +1,244 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>AI MERN Stack — Job-Ready Roadmap</title>
+<style>
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+  :root {
+    --bg: #ffffff; --bg2: #f5f5f3; --bg3: #efefec;
+    --text: #1a1a18; --text2: #6b6b67; --text3: #9b9b96;
+    --border: rgba(0,0,0,0.12); --border2: rgba(0,0,0,0.2);
+    --green: #1D9E75; --green-light: #E1F5EE; --green-dark: #0F6E56;
+    --radius: 12px; --radius-sm: 8px;
+  }
+  @media (prefers-color-scheme: dark) {
+    :root {
+      --bg: #1c1c1a; --bg2: #252523; --bg3: #2e2e2b;
+      --text: #f0f0ec; --text2: #a0a09a; --text3: #6b6b67;
+      --border: rgba(255,255,255,0.1); --border2: rgba(255,255,255,0.18);
+    }
+  }
+  body { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif; background: var(--bg3); color: var(--text); min-height: 100vh; padding: 2rem 1rem; }
+  .wrap { max-width: 720px; margin: 0 auto; }
+  .header { text-align: center; margin-bottom: 2rem; }
+  .header h1 { font-size: 26px; font-weight: 600; color: var(--text); margin-bottom: 6px; }
+  .header p { font-size: 15px; color: var(--text2); }
+  .progress-section { background: var(--bg); border: 0.5px solid var(--border); border-radius: var(--radius); padding: 16px 20px; margin-bottom: 1.5rem; }
+  .progress-top { display: flex; justify-content: space-between; align-items: center; margin-bottom: 10px; }
+  .progress-top span { font-size: 13px; color: var(--text2); }
+  .progress-top strong { font-size: 15px; color: var(--green); }
+  .progress-bar-wrap { background: var(--bg3); border-radius: 99px; height: 8px; }
+  .progress-bar { height: 8px; border-radius: 99px; background: var(--green); transition: width 0.4s ease; width: 0%; }
+  .phase { margin-bottom: 1.25rem; border: 0.5px solid var(--border); border-radius: var(--radius); overflow: hidden; background: var(--bg); }
+  .phase-header { display: flex; align-items: center; gap: 12px; padding: 15px 18px; cursor: pointer; user-select: none; background: var(--bg2); transition: background 0.15s; }
+  .phase-header:hover { background: var(--bg3); }
+  .phase-icon { width: 40px; height: 40px; border-radius: var(--radius-sm); display: flex; align-items: center; justify-content: center; font-size: 18px; flex-shrink: 0; }
+  .phase-meta { flex: 1; }
+  .phase-title { font-size: 15px; font-weight: 600; color: var(--text); }
+  .phase-sub { font-size: 12px; color: var(--text2); margin-top: 2px; }
+  .phase-badge { font-size: 11px; font-weight: 600; padding: 3px 10px; border-radius: 99px; flex-shrink: 0; }
+  .phase-chevron { font-size: 16px; color: var(--text3); transition: transform 0.25s; flex-shrink: 0; }
+  .phase-chevron.open { transform: rotate(180deg); }
+  .phase-body { display: none; padding: 4px 18px 18px; border-top: 0.5px solid var(--border); }
+  .phase-body.open { display: block; }
+  .section-label { font-size: 11px; font-weight: 600; color: var(--text3); text-transform: uppercase; letter-spacing: 0.07em; margin: 16px 0 8px; }
+  .checklist { list-style: none; }
+  .checklist li { display: flex; align-items: flex-start; gap: 10px; padding: 5px 4px; font-size: 14px; color: var(--text); cursor: pointer; border-radius: 6px; transition: background 0.1s; }
+  .checklist li:hover { background: var(--bg2); }
+  .cb { width: 17px; height: 17px; border: 1.5px solid var(--border2); border-radius: 4px; flex-shrink: 0; margin-top: 1px; display: flex; align-items: center; justify-content: center; transition: all 0.15s; }
+  .cb.checked { background: var(--green); border-color: var(--green); }
+  .cb.checked::after { content: '✓'; font-size: 10px; color: #fff; font-weight: 700; }
+  .item-text.checked { color: var(--text3); text-decoration: line-through; }
+  .project-card { margin-top: 16px; background: var(--bg2); border: 0.5px solid var(--border); border-radius: var(--radius-sm); padding: 14px 16px; }
+  .project-top { display: flex; align-items: center; gap: 8px; margin-bottom: 8px; }
+  .project-pill { font-size: 11px; font-weight: 600; color: var(--green-dark); background: var(--green-light); padding: 2px 10px; border-radius: 99px; }
+  .project-title { font-size: 15px; font-weight: 600; color: var(--text); margin-bottom: 5px; }
+  .project-desc { font-size: 13px; color: var(--text2); line-height: 1.6; }
+  .tags { margin-top: 10px; display: flex; flex-wrap: wrap; gap: 5px; }
+  .tag { font-size: 11px; padding: 2px 9px; border-radius: 5px; background: var(--bg3); border: 0.5px solid var(--border); color: var(--text2); }
+  .footer { text-align: center; margin-top: 2rem; font-size: 12px; color: var(--text3); }
+  @media (max-width: 480px) {
+    body { padding: 1rem 0.5rem; }
+    .phase-header { padding: 12px 14px; }
+    .phase-body { padding: 4px 14px 14px; }
+  }
+</style>
+</head>
+<body>
+<div class="wrap">
+  <div class="header">
+    <h1>🧠 AI MERN Stack Roadmap</h1>
+    <p>Job-ready roadmap for JS/Java developers. Check off items as you go.</p>
+  </div>
+  <div class="progress-section">
+    <div class="progress-top">
+      <span>Overall Progress</span>
+      <strong id="plabel">0 / 0 completed</strong>
+    </div>
+    <div class="progress-bar-wrap"><div class="progress-bar" id="pbar"></div></div>
+  </div>
+  <div id="phases"></div>
+  <div class="footer">Progress is saved automatically in your browser · AI MERN Stack Roadmap</div>
+</div>
+
+<script>
+const phases = [
+  {
+    icon:"🧱", color:"#E1F5EE", textColor:"#0F6E56",
+    title:"Phase 1 — Node.js & Express Backend", sub:"Weeks 1–2 · Build server foundations",
+    badge:"Foundation", badgeBg:"#E1F5EE", badgeColor:"#0F6E56",
+    topics:[
+      { label:"Core Node.js", items:["Node.js modules, require vs ES modules","Event loop, async/await, Promises (leverage your Java concurrency knowledge)","File system, streams, Buffers","npm ecosystem: package.json, scripts, versioning"] },
+      { label:"Express.js", items:["REST API design: routes, controllers, middleware","Request/response lifecycle, body parsing, CORS","Error handling middleware (global + route-level)","Environment variables with dotenv"] }
+    ],
+    project:{ title:"Smart Notes REST API", desc:"Build a full REST API for a note-taking app with CRUD operations, search by keyword, tagging, and markdown support. Zero frontend — pure backend engineering.", tags:["Express","Node.js","REST","Middleware"] }
+  },
+  {
+    icon:"🍃", color:"#EAF3DE", textColor:"#3B6D11",
+    title:"Phase 2 — MongoDB & Mongoose", sub:"Weeks 2–3 · Master the NoSQL layer",
+    badge:"Database", badgeBg:"#EAF3DE", badgeColor:"#3B6D11",
+    topics:[
+      { label:"MongoDB Fundamentals", items:["Document model vs relational (your Java OOP helps here)","Collections, CRUD operations, indexes","Aggregation pipeline: $match, $group, $lookup, $project","Atlas cloud setup, connection strings"] },
+      { label:"Mongoose ODM", items:["Schemas, Models, validation, virtuals","Relationships: populate() vs embedding — when to choose","Middleware hooks: pre/post save, update","Lean queries for performance"] }
+    ],
+    project:{ title:"E-Commerce Inventory Engine", desc:"Model products, categories, and suppliers with complex relationships. Build aggregations for low-stock alerts, revenue-by-category reports, and fast search with compound indexes.", tags:["MongoDB","Mongoose","Aggregation","Indexes"] }
+  },
+  {
+    icon:"⚛️", color:"#EEEDFE", textColor:"#3C3489",
+    title:"Phase 3 — React Fundamentals to Advanced", sub:"Weeks 3–5 · Master the frontend",
+    badge:"Frontend", badgeBg:"#EEEDFE", badgeColor:"#3C3489",
+    topics:[
+      { label:"Core React", items:["JSX, functional components, props, children","useState, useEffect, useRef — mental model for renders","Controlled forms, event handling","Lists, keys, conditional rendering"] },
+      { label:"Advanced React", items:["useContext, useReducer for complex state","Custom hooks — encapsulate and reuse logic","useMemo, useCallback — when they actually help","Error boundaries, Suspense, lazy loading"] },
+      { label:"Ecosystem", items:["React Router v6: nested routes, loaders, params","TanStack Query (React Query) for server state","Zustand or Redux Toolkit for global state","React Hook Form + Zod for validation"] }
+    ],
+    project:{ title:"Real-Time Dashboard with WebSockets", desc:"Build a live analytics dashboard that streams metrics updates via WebSocket from your Express backend. Includes charts, filterable tables, and real-time notifications.", tags:["React","WebSocket","Recharts","TanStack Query"] }
+  },
+  {
+    icon:"🔐", color:"#FAEEDA", textColor:"#854F0B",
+    title:"Phase 4 — Auth, Security & Deployment", sub:"Weeks 5–6 · Production-ready apps",
+    badge:"Security", badgeBg:"#FAEEDA", badgeColor:"#854F0B",
+    topics:[
+      { label:"Authentication", items:["JWT: access tokens + refresh token rotation","HTTP-only cookie security vs localStorage tradeoffs","Google OAuth2 with Passport.js or Auth.js","Role-based access control (RBAC) middleware"] },
+      { label:"Security Best Practices", items:["Helmet.js, rate limiting, CSRF protection","Input sanitization, MongoDB injection prevention","bcrypt password hashing, salt rounds","HTTPS, secure headers in production"] },
+      { label:"DevOps & Deployment", items:["Dockerize MERN app (multi-stage builds)","GitHub Actions CI/CD pipeline","Deploy to Railway or Render + MongoDB Atlas","Environment management, secrets handling"] }
+    ],
+    project:{ title:"Multi-Tenant SaaS Auth System", desc:"Build a full auth system with signup/login, email verification, forgot-password flow, Google SSO, and workspace-level RBAC. Each user role has scoped API access.", tags:["JWT","OAuth2","RBAC","Docker","CI/CD"] }
+  },
+  {
+    icon:"🤖", color:"#FAECE7", textColor:"#993C1D",
+    title:"Phase 5 — AI Integration (LLMs + Agents)", sub:"Weeks 7–9 · The market differentiator",
+    badge:"AI Layer", badgeBg:"#FAECE7", badgeColor:"#993C1D",
+    topics:[
+      { label:"LLM APIs & Prompting", items:["OpenAI / Anthropic API: completions, chat, function calling","Streaming responses to React with SSE (Server-Sent Events)","Prompt engineering: system prompts, few-shot, chain-of-thought","Token budgeting, cost estimation, model selection"] },
+      { label:"AI Backend Architecture", items:["LangChain.js for orchestration and chains","RAG (Retrieval-Augmented Generation) with vector stores","Pinecone or pgvector for embeddings storage","AI response caching and rate limit handling"] },
+      { label:"Agents & Tools", items:["Tool/function calling to give AI backend access","Building multi-step AI agents with memory","Guardrails: content filtering, hallucination mitigation","AI observability with LangSmith or Helicone"] }
+    ],
+    project:{ title:"AI Document Q&A Platform", desc:"Upload PDFs → chunk and embed text → store in vector DB → chat with documents. Features streaming responses, source citations, multi-document support, and conversation history. Full RAG pipeline.", tags:["OpenAI","LangChain.js","Pinecone","RAG","SSE","Streaming"] }
+  },
+  {
+    icon:"🚀", color:"#E6F1FB", textColor:"#185FA5",
+    title:"Phase 6 — Portfolio Projects (Job-Ready)", sub:"Weeks 9–12 · Land the job",
+    badge:"Career", badgeBg:"#E6F1FB", badgeColor:"#185FA5",
+    topics:[
+      { label:"Advanced Full-Stack Patterns", items:["Microservices vs Monolith — when to split","BullMQ job queues for background AI tasks","Redis caching for LLM responses and sessions","GraphQL with Apollo as REST alternative"] },
+      { label:"Testing", items:["Jest + Supertest for API integration tests","React Testing Library for component tests","Playwright for E2E tests on full MERN flows","Mock OpenAI in tests to avoid API costs"] },
+      { label:"Career Prep", items:["GitHub profile: pinned repos with good READMEs","Deploy all projects with live demo links","System design: design an AI chat app (LLD + HLD)","MERN + AI interview Q prep: useEffect deep dive, JWT vs sessions, RAG pipeline explain"] }
+    ],
+    project:{ title:"AI-Powered Hiring Platform (Capstone)", desc:"Full SaaS: companies post jobs, candidates apply with AI-scored resumes, recruiters get an AI assistant for screening. Includes multi-tenant auth, background job processing, vector search for candidate matching, and a live chat feature.", tags:["Full MERN","AI Agents","Redis","BullMQ","Multi-tenant","Capstone"] }
+  }
+];
+
+const STORAGE_KEY = 'ai_mern_roadmap_v1';
+let states = JSON.parse(localStorage.getItem(STORAGE_KEY) || '{}');
+let totalItems = 0;
+
+function countTotal() {
+  totalItems = 0;
+  phases.forEach((p, pi) => p.topics.forEach((t, ti) => t.items.forEach((_, ii) => {
+    totalItems++;
+    const k = `${pi}-${ti}-${ii}`;
+    if (states[k] === undefined) states[k] = false;
+  })));
+}
+
+function save() { localStorage.setItem(STORAGE_KEY, JSON.stringify(states)); }
+
+function updateProgress() {
+  const done = Object.values(states).filter(Boolean).length;
+  const pct = totalItems ? Math.round((done / totalItems) * 100) : 0;
+  document.getElementById('pbar').style.width = pct + '%';
+  document.getElementById('plabel').textContent = `${done} / ${totalItems} completed`;
+}
+
+function toggle(key) {
+  states[key] = !states[key];
+  save();
+  updateProgress();
+  document.querySelectorAll(`[data-key="${key}"]`).forEach(li => {
+    const cb = li.querySelector('.cb');
+    const sp = li.querySelector('.item-text');
+    if (states[key]) { cb.classList.add('checked'); sp.classList.add('checked'); }
+    else { cb.classList.remove('checked'); sp.classList.remove('checked'); }
+  });
+}
+
+function togglePhase(pi) {
+  document.getElementById(`body-${pi}`).classList.toggle('open');
+  document.getElementById(`chev-${pi}`).classList.toggle('open');
+}
+
+function render() {
+  const container = document.getElementById('phases');
+  container.innerHTML = '';
+  phases.forEach((phase, pi) => {
+    const el = document.createElement('div');
+    el.className = 'phase';
+
+    let topicsHtml = '';
+    phase.topics.forEach((topic, ti) => {
+      topicsHtml += `<div class="section-label">${topic.label}</div><ul class="checklist">`;
+      topic.items.forEach((item, ii) => {
+        const key = `${pi}-${ti}-${ii}`;
+        const checked = states[key];
+        topicsHtml += `<li data-key="${key}" onclick="toggle('${key}')"><div class="cb${checked?' checked':''}"></div><span class="item-text${checked?' checked':''}">${item}</span></li>`;
+      });
+      topicsHtml += '</ul>';
+    });
+
+    const p = phase.project;
+    el.innerHTML = `
+      <div class="phase-header" onclick="togglePhase(${pi})">
+        <div class="phase-icon" style="background:${phase.color};color:${phase.textColor}">${phase.icon}</div>
+        <div class="phase-meta">
+          <div class="phase-title">${phase.title}</div>
+          <div class="phase-sub">${phase.sub}</div>
+        </div>
+        <span class="phase-badge" style="background:${phase.badgeBg};color:${phase.badgeColor}">${phase.badge}</span>
+        <span class="phase-chevron" id="chev-${pi}">▾</span>
+      </div>
+      <div class="phase-body" id="body-${pi}">
+        ${topicsHtml}
+        <div class="project-card">
+          <div class="project-top"><span class="project-pill">⚡ Project</span></div>
+          <div class="project-title">${p.title}</div>
+          <div class="project-desc">${p.desc}</div>
+          <div class="tags">${p.tags.map(t=>`<span class="tag">${t}</span>`).join('')}</div>
+        </div>
+      </div>
+    `;
+    container.appendChild(el);
+  });
+
+  document.getElementById('body-0').classList.add('open');
+  document.getElementById('chev-0').classList.add('open');
+  updateProgress();
+}
+
+countTotal();
+render();
+</script>
+</body>
+</html>
