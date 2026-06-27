@@ -15,3 +15,8 @@ app.get('/', (req, res) => {
     res.send('Hello, Express World!');
 });
 
+// use the notes router
+app.use('/api/v1/notes', require('./Route/noteRoute'));
+
+module.exports = app;
+

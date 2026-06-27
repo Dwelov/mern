@@ -2,6 +2,9 @@
 // This will include functions for creating, reading, updating, and deleting notes. We will also implement search 
 // and filtering functionality.
 
+// importing the notes array from schema
+const notes = require('../schema/note');
+
 //cretation of new note
 const createNote = (req, res) => {
     const { title, content, tag } = req.body;
